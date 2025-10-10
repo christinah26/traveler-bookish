@@ -35,12 +35,12 @@ function Header() {
 
         {/* Menu desktop */}
         <ul className="hidden md:flex gap-6 list-none" id="menu">
-          <li><a href="#accueil" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</a></li>
-          <li><a href="#destinations" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</a></li>
-          <li><a href="#hotels" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</a></li>
+          <li><Link to="/" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</Link></li>
+          <li><Link to="/destinations" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</Link></li>
+          <li><Link tp="/hotels" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</Link></li>
           <li><a href="#avis" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Avis</a></li>
           <li><a href="#contact" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Contact</a></li>
-          <li><Link to="/formulaire" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Log in</Link></li>
+          <li><Link to="/formulaire" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Réservation</Link></li>
         </ul>
       </nav>
 
@@ -59,12 +59,12 @@ function Header() {
         </button>
 
         <div className="flex flex-col items-center mt-16 gap-8">
-          <a href="#accueil" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Accueil</a>
-          <a href="#destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Destinations</a>
-          <a href="#hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Hôtels</a>
+          <Link to="/" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Accueil</Link>
+          <Link to="/destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Destinations</Link>
+          <Link to="/hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Hôtels</Link>
           <a href="#avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Avis</a>
           <a href="#contact" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Contact</a>
-          <Link to="/formulaire" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Log in</Link>
+          <Link to="/formulaire" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Réservation</Link>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function Destination({nom , image, desc , prix}){
+function DestinationCard({nom , image, desc , prix}){
   const navigate = useNavigate();
 
   const handleReserver = () => {
@@ -27,4 +27,4 @@ function Destination({nom , image, desc , prix}){
     )
 }
 
-export default Destination;
+export default DestinationCard;

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-function hotel({nom , image, desc , prix}){
+function hotelCard({nom , image, desc , prix}){
   const navigate = useNavigate();
 
   const handleReserver = () => {
@@ -21,4 +21,4 @@ function hotel({nom , image, desc , prix}){
     )
 }
 
-export default hotel;
+export default hotelCard;

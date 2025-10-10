@@ -37,7 +37,7 @@ function header(){
           src='/video/video.mp4'
           aria-hidden="true"
         />
-         <div className="absolute inset-0 bg-black/20 z-0"></div>
+         <div className="absolute inset-0 bg-black/15 z-0"></div>
 
         
         <div className="relative z-10 w-full px-4 sm:px-8 text-center ">
