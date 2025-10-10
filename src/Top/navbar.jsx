@@ -36,8 +36,9 @@ function Header() {
         {/* Menu desktop */}
         <ul className="hidden md:flex gap-6 list-none" id="menu">
           <li><Link to="/" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</Link></li>
-          <li><Link to="/destinations" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</Link></li>
-          <li><Link tp="/hotels" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</Link></li>
+          <li><Link to="/pages/destinations" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</Link></li>
+          <li><Link to="/pages/hotels" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</Link></li>
+          <li><Link to="/pages/compagnies" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Compagnies aériennes</Link></li>
           <li><a href="#avis" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Avis</a></li>
           <li><a href="#contact" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Contact</a></li>
           <li><Link to="/formulaire" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Réservation</Link></li>
@@ -60,8 +61,9 @@ function Header() {
 
         <div className="flex flex-col items-center mt-16 gap-8">
           <Link to="/" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Accueil</Link>
-          <Link to="/destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Destinations</Link>
-          <Link to="/hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Hôtels</Link>
+          <Link to="/pages/destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Destinations</Link>
+          <Link to="/pages/hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Hôtels</Link>
+          <Link to="/pages/compagnies" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Compagnies aériennes</Link>
           <a href="#avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Avis</a>
           <a href="#contact" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Contact</a>
           <Link to="/formulaire" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Réservation</Link>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Plane, MapPin, Calendar, Send, ArrowLeft } from 'lucide-react';
+import { MapPin, Calendar, Send, ArrowLeft } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import Logo from "../assets/traveler-nobg.png";
 
 function Formulaire () {
   const location = useLocation();
-  const state = location.state as { hotel?: string; destination?: string } | undefined;
+  const state = location.state || {};
+
 
   const [formData, setFormData] = useState({
     nom: '',
@@ -13,6 +15,7 @@ function Formulaire () {
     telephone: '',
     destination: state?.destination ||'',
     hotel: state?.hotel ||'',
+    compagnie: state?.compagnie || '',
     dateDebut: '',
     dateFin: ''
 
@@ -52,8 +55,8 @@ function Formulaire () {
       <div className="max-w-3xl mx-auto">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg mb-4">
-            <Plane className="w-8 h-8 text-blue-500" />
+          <div className="inline-flex items-center justify-center w-50 bg-white rounded-full shadow-lg mb-4">
+            <img src={Logo}  />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">Réservez Votre Voyage</h1>
           <p className="text-blue-50 text-lg">Remplissez le formulaire pour démarrer votre aventure</p>
@@ -130,7 +133,7 @@ function Formulaire () {
 
             </div>
 
-            {/* Destination et Hôtel */}
+            {/* Destination et Hôtel et Compagnie*/}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="destination" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -163,6 +166,22 @@ function Formulaire () {
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
               />
               </div>
+
+              <div>
+                <label htmlFor="compagnie" className="block text-sm font-semibold text-gray-700 mb-2">
+                Compagnie aérienne *
+                </label>
+                <input
+              type="text"
+              id="compagnie"
+              name="compagnie"
+              value={formData.compagnie}
+              onChange={handleChange}
+              placeholder="Compagnie choisie"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+              />
+              </div>
+
 
             </div>
 

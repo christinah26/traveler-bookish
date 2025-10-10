@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Accueil from "./pages/Accueil";
 import Formulaire from "./pages/Formulaire.tsx";
-import Destination from "./pages/Destination";
-import Hotel from "./pages/Hotel";
-
+import Pages from "./pages/Pages.jsx";
 
 export default function App() {
   return (
@@ -11,8 +9,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Accueil />} />
         <Route path="/formulaire" element={<Formulaire />} />
-        <Route path="/destinations" element={<Destination />} />
-        <Route path="/hotels" element={<Hotel />} />
+        <Route path="/pages/:pageType" element={<Pages />} />
+        
       </Routes>
     </Router>
   );

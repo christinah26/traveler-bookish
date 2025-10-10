@@ -5,6 +5,7 @@ const HotelData = [
       image: '/hotels_img/hotel1.jpg',
       desc: 'Plages dorées et rizières verdoyantes.',
       prix: 900,
+      type: 'hotel',
     },
     {
       id: 2,
@@ -12,6 +13,7 @@ const HotelData = [
       image: '/hotels_img/hotel2.jpg',
       desc: 'Ville de l’amour et de l’art.',
       prix: 1200,
+      type: 'hotel',
     },
 
     {
@@ -20,6 +22,7 @@ const HotelData = [
       image: '/hotels_img/hotel3.jpg',
       desc: 'Ville de l’amour et de l’art.',
       prix: 1200,
+      type: 'hotel',
     },
 
     {
@@ -28,6 +31,7 @@ const HotelData = [
       image: '/hotels_img/hotel4.jpg',
       desc: 'Ville de l’amour et de l’art.',
       prix: 1200,
+      type: 'hotel',
     },
 
     {
@@ -36,6 +40,7 @@ const HotelData = [
       image: '/hotels_img/hotel5.jpg',
       desc: 'Ville de l’amour et de l’art.',
       prix: 1200,
+      type: 'hotel',
     },
 
   ];
