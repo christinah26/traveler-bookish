@@ -1,4 +1,8 @@
 import { useEffect, useRef } from 'react';
+<<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> b9db595 (quqtrième version)
 function header(){
     const animateCounter = useRef((id, target, duration) => {
         const element = document.getElementById(id);
@@ -50,13 +54,26 @@ function header(){
             majestueuses ou de villes vibrantes, nous avons tout ce qu'il vous faut
             pour planifier le voyage parfait.
           </p>
+<<<<<<< HEAD
           <a
+=======
+          {/* <a
+>>>>>>> b9db595 (quqtrième version)
             href="#destinations"
             className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Commencer l'exploration"
           >
             Commençons l'exploration
+<<<<<<< HEAD
           </a>
+=======
+          </a> */}
+
+          <button className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110">
+            <Link to="/signin">Créer un compte</Link>
+          </button>
+
+>>>>>>> b9db595 (quqtrième version)
         </div>
     
         <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8 z-10 text-white">

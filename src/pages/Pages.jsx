@@ -6,6 +6,8 @@ import Card from '../cards/Card.jsx';
 import HotelsData from '../Data/HotelData.jsx';
 import DestinationData from '../Data/DestinationData.jsx';
 import AeroData from '../Data/aeroData.jsx';
+import Contact from '../Section/contact.jsx';
+
 
 export default function Pages() {
   const { pageType } = useParams();
@@ -69,6 +71,7 @@ export default function Pages() {
           )}
         </div>
       </section>
+      <Contact />
       <Footer />
     </div>
   );

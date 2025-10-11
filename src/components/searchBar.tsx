@@ -169,7 +169,8 @@ function SearchBar() {
       {/* Bouton icône pour ouvrir le modal */}
       <button
         onClick={toggleSearch}
-        className="p-2 rounded-full hover:bg-blue-100 transition-colors"
+
+        className="rounded-full hover:bg-blue-100 transition-colors"
         aria-label="Rechercher un voyage"
       >
         <Search className="w-6 h-6 text-blue-600" />
@@ -178,11 +179,6 @@ function SearchBar() {
       {/* Modal de recherche */}
       {isOpen && (
         <>
-          {/* Overlay */}
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
-            onClick={toggleSearch}
-          ></div>
 
           {/* Modal */}
           <div className="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl z-50 overflow-y-auto">

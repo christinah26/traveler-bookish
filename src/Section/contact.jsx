@@ -10,14 +10,22 @@ function Contact() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="bg-green-200 p-8 md:p-20 text-center">
+=======
+    <div className="bg-green-200 p-8 md:p-20 text-center" id="#contact">
+>>>>>>> b9db595 (quqtrième version)
       <h2 className="text-blue-900 mb-4 opacity-90">
         Une question ? Nous sommes là pour vous aider !
       </h2>
 
       <button
         onClick={toggleForm}
+<<<<<<< HEAD
         className="text-2xl font-bold mb-3 text-blue-900 cursor-pointer"
+=======
+        className="text-2xl font-bold mb-3 text-blue-900 cursor-pointer hover:text-fuchsia-600"
+>>>>>>> b9db595 (quqtrième version)
         aria-label="Afficher le formulaire de contact"
         aria-expanded={showForm}
         id="contact-toggle"
