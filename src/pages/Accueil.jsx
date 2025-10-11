@@ -66,12 +66,13 @@ function Accueil() {
         sousTitre="Ce que nos clients disent de nous"
         data={AvisData}
         buttonLink="/avis"
-        buttonText="Voir plus d’avis"
+        buttonText="Voir plus d'avis"
         options={{ showStars: true, showDate: true }}
       />
       </FadeIn>
 
       <FadeIn>
+
       <Contact/>
       
 
