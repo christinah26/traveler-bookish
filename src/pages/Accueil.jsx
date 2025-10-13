@@ -25,6 +25,7 @@ function Accueil() {
         <FadeIn>
         {/* Destinations */}
         <SectionList 
+        id="destinations-section"
         title="Destinations Populaires"
         sousTitre="Découvrez nos destinations les plus prisées"
         data={destinationsData}
@@ -66,7 +67,7 @@ function Accueil() {
         sousTitre="Ce que nos clients disent de nous"
         data={AvisData}
         buttonLink="/avis"
-        buttonText="Voir plus d'avis"
+        buttonText="Donner votre avis ★"
         options={{ showStars: true, showDate: true }}
       />
       </FadeIn>
