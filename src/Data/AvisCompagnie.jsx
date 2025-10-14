@@ -1,20 +1,20 @@
-const AvisData = [
+const AvisCompagnie = [
     {
-        nom:"Alice Dupont",
+        nom:"Angel Dupont",
         etoiles: 5,
         desc:"Expérience incroyable à Bali ! Les plages sont magnifiques et la culture est fascinante. Je recommande vivement ce voyage.",
         
     },
 
     {
-        nom:"Albert Dupont",
+        nom:"Alice Dupont",
         etoiles: 5,
         desc:"Expérience incroyable à Bali ! Les plages sont magnifiques et la culture est fascinante. Je recommande vivement ce voyage.",
        
     },
 
     {
-        nom:"Junior Dupont",
+        nom:"Jean Dupont",
         etoiles: 5,
         desc:"Expérience incroyable à Bali ! Les plages sont magnifiques et la culture est fascinante. Je recommande vivement ce voyage.",
        
@@ -24,4 +24,4 @@ const AvisData = [
 
 ]
 
-export default AvisData;
+export default AvisCompagnie;

@@ -35,7 +35,7 @@ export default function Card({
 
   return (
     <div className=" bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 p-4 ">
-      {/* Image (si dispo) */}
+      {/* Image  */}
       {showImage && image && (
         <img src={image} alt={nom} className="h-48 w-full object-cover rounded-lg mb-4" />
       )}

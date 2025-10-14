@@ -6,9 +6,9 @@ import SectionList from '../Section/SectionList.jsx';
 import destinationsData from '../Data/DestinationData.jsx';
 import aeroData from '../Data/aeroData.jsx';
 import hotelsData from '../Data/HotelData.jsx';
-import AvisData from '../Data/AvisData.jsx';
 import Contact from '../Section/contact.jsx';
 import FadeIn from '../components/fadeIn.jsx';
+import AvisSection from '../Section/AvisSection.jsx';
 
 function Accueil() {
   return (
@@ -20,6 +20,7 @@ function Accueil() {
       <Header />
       </FadeIn>
 
+      
       
       <main className="flex-grow">
         <FadeIn>
@@ -43,7 +44,7 @@ function Accueil() {
         data={hotelsData}
         buttonLink="/pages/hotels"
         buttonText="Explorer les hôtels"
-        options={{ showImage: true, showPrice: true, showReserve: true }}
+        options={{ showStars:true, showImage: true, showPrice: true, showReserve: true }}
         
         />
         </FadeIn>
@@ -56,20 +57,15 @@ function Accueil() {
         data={aeroData}
         buttonLink="/pages/compagnies"
         buttonText="Explorer les compagnies aériennes"
-        options={{ showImage: true, showPrice: true, showReserve: true }}
+        options={{ showStars:true, showImage: true, showPrice: true, showReserve: true }}
         />
         </FadeIn>
+
+        
       
       <FadeIn>
-      {/* Avis */}
-      <SectionList
-        title="Avis de nos clients"
-        sousTitre="Ce que nos clients disent de nous"
-        data={AvisData}
-        buttonLink="/avis"
-        buttonText="Donner votre avis ★"
-        options={{ showStars: true, showDate: true }}
-      />
+      {/* Avis Section */}
+      <AvisSection/>
       </FadeIn>
 
       <FadeIn>
