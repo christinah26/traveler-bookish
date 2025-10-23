@@ -6,30 +6,49 @@ import Card from '../cards/Card.jsx';
 import HotelsData from '../Data/HotelData.jsx';
 import DestinationData from '../Data/DestinationData.jsx';
 import AeroData from '../Data/aeroData.jsx';
+import ChambreData from '../Data/ChambreData.jsx';
 import Contact from '../Section/contact.jsx';
-
 
 export default function Pages() {
   const { pageType } = useParams();
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(3);
+  const [selectedCategory, setSelectedCategory] = useState("Toutes");
 
-  // Charger les données selon le type
   useEffect(() => {
     if (pageType === "destinations") setData(DestinationData);
     else if (pageType === "hotels") setData(HotelsData);
     else if (pageType === "compagnies") setData(AeroData);
+    else if (pageType === "chambres") setData(ChambreData);
     else setData([]);
-    setVisible(3); // Réinitialiser visible quand on change de page
-  }, [pageType])
- ;
+    setVisible(3);
+    setSelectedCategory("Toutes");
+  }, [pageType]);
 
-  // Titre dynamique
   const titles = {
     destinations: "Nos Destinations",
     hotels: "Nos Hôtels",
     compagnies: "Nos Compagnies Aériennes",
+    chambres: "Nos Chambres Disponibles",
   };
+
+  const categories = [
+    "Toutes",
+    "Standard",
+    "Deluxe",
+    "Familiale",
+    "Suite ",
+    "Supérieure",
+    "Présidentielle",
+    "Simple",
+    "Double",
+    "Triple"
+  ];
+
+  const filteredData =
+    pageType === "chambres" && selectedCategory !== "Toutes"
+      ? data.filter((item) => item.categorie === selectedCategory)
+      : data;
 
   return (
     <div>
@@ -39,22 +58,43 @@ export default function Pages() {
           {titles[pageType] || "Liste"}
         </h1>
 
+        {/* Filtres pour les chambres */}
+        {pageType === "chambres" && (
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-full ${
+                  selectedCategory === cat
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Cartes */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {data.slice(0, visible).map((item) => (
+          {filteredData.slice(0, visible).map((item) => (
             <Card
               key={item.id}
               {...item}
               showImage={!!item.image}
               showPrice={!!item.prix}
-              showReserve={item.type !== "compagnie"} // utilise item.type
+              showReserve={true}
               showStars={!!item.etoiles}
               showDate={!!item.date}
             />
           ))}
         </div>
 
+        {/* Bouton voir plus/moins */}
         <div className="flex justify-center">
-          {visible < data.length ? (
+          {visible < filteredData.length ? (
             <button
               onClick={() => setVisible(visible + 3)}
               className="mt-6 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -76,3 +116,4 @@ export default function Pages() {
     </div>
   );
 }
+

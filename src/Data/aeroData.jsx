@@ -8,6 +8,7 @@ const DestinationData = [
       desc: 'une destination de voyage unique qui mêle harmonieusement traditions ancestrales et modernité saisissante',
       type: 'compagnie',
     },
+    
     {
       id: 2,
       nom: 'Air Madagascar',

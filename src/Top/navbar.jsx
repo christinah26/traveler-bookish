@@ -40,10 +40,11 @@ function Header() {
           <li><Link to="/" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</Link></li>
           <li><Link to="/pages/destinations" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</Link></li>
           <li><Link to="/pages/hotels" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</Link></li>
+          <li><Link to="/pages/chambres" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Chambres</Link></li>
           <li><Link to="/pages/compagnies" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Compagnies aériennes</Link></li>
           <li><a href="#contact" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Contact</a></li>
           <li><Link to="/formulaire" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Réservation</Link></li>
-          <li><Link to="/avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Laisser un avis</Link></li>
+          <li><Link to="/avis" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Laisser un avis</Link></li>
           {/* <li><Link to="/login" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Log in</Link></li>
           <li><Link to="/signin" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Sign in</Link></li> */}
         </ul>
@@ -63,16 +64,17 @@ function Header() {
           ✕
         </button>
 
-        <div className="flex flex-col items-center mt-16 gap-8">
+        <div className="flex flex-col items-center mt-16 gap-8 ">
 
           <SearchBar />
-          <Link to="/" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Accueil</Link>
-          <Link to="/pages/destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Destinations</Link>
-          <Link to="/pages/hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Hôtels</Link>
-          <Link to="/pages/compagnies" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Compagnies aériennes</Link>
-          <a href="#contact" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Contact</a>
-          <Link to="/formulaire" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Réservation</Link>
-          <Link to="/avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Laisser un avis</Link>
+          <Link to="/" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</Link>
+          <Link to="/pages/destinations" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Destinations</Link>
+          <Link to="/pages/hotels" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Hôtels</Link>
+          <Link to="/pages/chambres" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Chambres</Link>
+          <Link to="/pages/compagnies" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Compagnies aériennes</Link>
+          <a href="#contact" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Contact</a>
+          <Link to="/formulaire" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Réservation</Link>
+          <Link to="/avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Laisser un avis</Link>
           {/* {/* <Link to="/login" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Log in</Link>
           <Link to="/signin" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Sign in</Link> */}
         </div> 

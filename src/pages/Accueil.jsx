@@ -6,6 +6,7 @@ import SectionList from '../Section/SectionList.jsx';
 import destinationsData from '../Data/DestinationData.jsx';
 import aeroData from '../Data/aeroData.jsx';
 import hotelsData from '../Data/HotelData.jsx';
+import ChambreData from '../Data/ChambreData.jsx';
 import Contact from '../Section/contact.jsx';
 import FadeIn from '../components/fadeIn.jsx';
 import AvisSection from '../Section/AvisSection.jsx';
@@ -47,6 +48,18 @@ function Accueil() {
         options={{ showStars:true, showImage: true, showPrice: true, showReserve: true }}
         
         />
+        </FadeIn>
+
+        {/* Chambres */}
+        <FadeIn>
+        <SectionList
+        title="Nos Chambres"
+        sousTitre="Découvrez nos chambres selon vos envies"
+        data={ChambreData}
+        buttonLink="/pages/chambres"
+        buttonText="Voir toutes les chambres"
+        options={{ showPrice: true, showImage : true , showReserve: true }}
+      />
         </FadeIn>
 
         <FadeIn> 

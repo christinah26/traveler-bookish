@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Star, X } from "lucide-react";
+import { X } from "lucide-react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import ReviewSection from "../components/review";
+import ToggleSection from "../components/ToggleSection";
 
 export default function AvisForm() {
   const navigate = useNavigate();
-
   const [reviewData, setReviewData] = useState({
     user: "",
     hotel: "",
@@ -16,60 +17,38 @@ export default function AvisForm() {
     airlineComment: "",
   });
 
-  const [sections, setSections] = useState({
-    hotel: true,
-    airline: true,
-  });
+  const [sections, setSections] = useState({ hotel: true, airline: true });
 
-  const handleSectionToggle = (type) => {
+  const handleSectionToggle = (type) =>
     setSections((prev) => ({ ...prev, [type]: !prev[type] }));
-  };
-
-  const handleRatingClick = (type, rating) => {
-    setReviewData((prev) => ({ ...prev, [type]: rating }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Vérification
-    if (!reviewData.user) {
-      Swal.fire("Erreur", "Merci d’indiquer votre nom ou e-mail", "warning");
-      return;
-    }
-
-    if (
-      (sections.hotel &&
-        (!reviewData.hotel || reviewData.hotelRating === 0)) ||
-      (sections.airline &&
-        (!reviewData.airline || reviewData.airlineRating === 0))
-    ) {
-      Swal.fire(
+    if (!reviewData.user) 
+      { Swal.fire(
         "Erreur",
-        "Merci de remplir tous les champs et de donner une note",
-        "warning"
-      );
-      return;
-    }
+        "Merci d’indiquer votre nom ou e-mail", "warning"); 
+        return; } 
+      
+    if ( (sections.hotel && (!reviewData.hotel || reviewData.hotelRating === 0)) || (sections.airline && (!reviewData.airline || reviewData.airlineRating === 0)) ) 
+        { Swal.fire( 
+          "Erreur",
+          "Merci de remplir tous les champs et de donner une note", "warning" ); 
+          return; } 
 
-    console.log("Avis soumis :", reviewData);
-    Swal.fire(
-      "Merci !",
-      "Votre avis a été publié avec succès",
-      "success"
-    );
-
-    // Reset
-    setReviewData({
-      user: "",
-      hotel: "",
-      hotelRating: 0,
-      hotelComment: "",
-      airline: "",
-      airlineRating: 0,
-      airlineComment: "",
-    });
-  };
+          console.log("Avis soumis :", reviewData);
+          Swal.fire( "Merci !", "Votre avis a été publié avec succès", "success" ); 
+        
+          // Reset
+        setReviewData({ 
+          user: "",
+          hotel: "", 
+          hotelRating: 0,
+          hotelComment: "",
+          airline: "",
+          airlineRating: 0,
+          airlineComment: "", });
+        };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50 p-6">
@@ -85,7 +64,6 @@ export default function AvisForm() {
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Nom utilisateur */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Votre nom ou e-mail
@@ -102,126 +80,42 @@ export default function AvisForm() {
             />
           </div>
 
-          {/* Toggle des sections */}
-          <div className="flex gap-4">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={sections.hotel}
-                onChange={() => handleSectionToggle("hotel")}
-              />
-              Évaluer l'Hôtel
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={sections.airline}
-                onChange={() => handleSectionToggle("airline")}
-              />
-              Évaluer la Compagnie
-            </label>
-          </div>
+          <ToggleSection sections={sections} onToggle={handleSectionToggle} />
 
-          {/* Section Hôtel */}
           {sections.hotel && (
-            <div className="border-b border-gray-200 pb-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                Évaluation de l'Hôtel
-              </h3>
-
-              <input
-                type="text"
-                value={reviewData.hotel}
-                onChange={(e) =>
-                  setReviewData({ ...reviewData, hotel: e.target.value })
-                }
-                placeholder="Nom de l'hôtel"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 outline-none"
-                required={sections.hotel}
-              />
-
-              <div className="flex space-x-2 mb-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    type="button"
-                    onClick={() => handleRatingClick("hotelRating", star)}
-                  >
-                    <Star
-                      className={`w-8 h-8 ${
-                        star <= reviewData.hotelRating
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              <textarea
-                rows="3"
-                value={reviewData.hotelComment}
-                onChange={(e) =>
-                  setReviewData({ ...reviewData, hotelComment: e.target.value })
-                }
-                placeholder="Commentaire sur l'hôtel..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
-              />
-            </div>
+            <ReviewSection
+              label="l'Hôtel"
+              nameValue={reviewData.hotel}
+              onNameChange={(v) => setReviewData({ ...reviewData, hotel: v })}
+              ratingValue={reviewData.hotelRating}
+              onRatingChange={(v) =>
+                setReviewData({ ...reviewData, hotelRating: v })
+              }
+              commentValue={reviewData.hotelComment}
+              onCommentChange={(v) =>
+                setReviewData({ ...reviewData, hotelComment: v })
+              }
+              required
+            />
           )}
 
-          {/* Section Compagnie */}
           {sections.airline && (
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                Évaluation de la Compagnie
-              </h3>
-
-              <input
-                type="text"
-                value={reviewData.airline}
-                onChange={(e) =>
-                  setReviewData({ ...reviewData, airline: e.target.value })
-                }
-                placeholder="Nom de la compagnie aérienne"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 outline-none"
-                required={sections.airline}
-              />
-
-              <div className="flex space-x-2 mb-3">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    type="button"
-                    onClick={() => handleRatingClick("airlineRating", star)}
-                  >
-                    <Star
-                      className={`w-8 h-8 ${
-                        star <= reviewData.airlineRating
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              <textarea
-                rows="3"
-                value={reviewData.airlineComment}
-                onChange={(e) =>
-                  setReviewData({
-                    ...reviewData,
-                    airlineComment: e.target.value,
-                  })
-                }
-                placeholder="Commentaire sur la compagnie aérienne..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
-              />
-            </div>
+            <ReviewSection
+              label="la Compagnie aérienne"
+              nameValue={reviewData.airline}
+              onNameChange={(v) => setReviewData({ ...reviewData, airline: v })}
+              ratingValue={reviewData.airlineRating}
+              onRatingChange={(v) =>
+                setReviewData({ ...reviewData, airlineRating: v })
+              }
+              commentValue={reviewData.airlineComment}
+              onCommentChange={(v) =>
+                setReviewData({ ...reviewData, airlineComment: v })
+              }
+              required
+            />
           )}
 
-          {/* Boutons */}
           <div className="flex gap-3 pt-4">
             <button
               type="reset"
@@ -252,4 +146,5 @@ export default function AvisForm() {
     </div>
   );
 }
+
 
