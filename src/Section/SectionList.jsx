@@ -13,7 +13,7 @@ export default function SectionList({ title, sousTitre, data, buttonLink, button
     }
   };
     return (
-    <section className="p-8 md:p-16 bg-gradient-to-b from-gray-300 to-white-500 text-center">
+    <section className="p-8 md:p-16 bg-gradient-to-b from-gray-300 to-white-500 text-center " id="section">
       <h2 className="text-3xl font-bold text-blue-900 ">{title}</h2>
         <p className="p-4  font-semibold text-center text-blue-900"> {sousTitre}</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

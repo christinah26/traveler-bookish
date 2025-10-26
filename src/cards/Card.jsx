@@ -19,19 +19,20 @@ export default function Card({
     const navigate = useNavigate();
 
     const handleReserve = () => {
-      const stateData = {};
-  
-      if (type === "destination") {
-        stateData.destination = nom;
-      } else if (type === "hotel") {
-        stateData.hotel = nom;
-      } else if (type === "compagnie") {
-        stateData.compagnie = nom;
-      }
-  
-      navigate("/formulaire", { state: stateData });
+  // localStorage 
+      const currentData = JSON.parse(localStorage.getItem("formData")) || {};
+    
+      if (type === "destination") currentData.destination = nom;
+      if (type === "hotel") currentData.hotel = nom;
+      if (type === "compagnie") currentData.compagnie = nom;
+    
+    
+      localStorage.setItem("formData", JSON.stringify(currentData));
+    
+    
+      navigate("/formulaire");
     };
-  
+    
 
   return (
     <div className=" bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105  ">

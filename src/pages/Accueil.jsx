@@ -27,7 +27,7 @@ function Accueil() {
         <FadeIn>
         {/* Destinations */}
         <SectionList 
-        id="destinations-section"
+        id= "destinations-section"
         title="Destinations Populaires"
         sousTitre="Découvrez nos destinations les plus prisées"
         data={destinationsData}
@@ -70,7 +70,7 @@ function Accueil() {
         data={aeroData}
         buttonLink="/pages/compagnies"
         buttonText="Explorer les compagnies aériennes"
-        options={{ showStars:true, showImage: true, showPrice: true, showReserve: true }}
+        options={{ showStars:true, showImage: true, showPrice: false , showReserve: true }}
         />
         </FadeIn>
 

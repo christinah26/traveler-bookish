@@ -1,10 +1,12 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {ArrowLeft } from 'lucide-react';
 
 function Retour() {
-
+const navigate = useNavigate();
 const handleRetour = () => {
-    if (confirm('Voulez-vous vraiment quitter ce formulaire ?')) {
-      window.history.back();
+    if (confirm('Voulez-vous vraiment quitter  ?')) {
+      navigate(-1);
 
     }
   };

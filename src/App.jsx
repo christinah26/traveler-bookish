@@ -19,7 +19,11 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/pages/:pageType" element={<Pages />} />
         <Route path="/avis" element={<AvisForm />} />
+        
+      
       </Routes>
+
+
     </Router>
   );
 }

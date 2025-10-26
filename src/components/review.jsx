@@ -1,4 +1,4 @@
-// components/ReviewSection.jsx
+
 import Stars from "./stars";
 
 export default function ReviewSection({
