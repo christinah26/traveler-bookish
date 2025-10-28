@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../Top/navbar.jsx";
 import Footer from "../Top/footer.jsx";
 import Card from "../cards/Card.jsx";
@@ -9,17 +9,21 @@ import AeroData from "../Data/aeroData.jsx";
 import ChambreData from "../Data/ChambreData.jsx";
 import Contact from "../Section/contact.jsx";
 import Retour from "../components/retour.tsx";
+import pays from "../Data/pays.json"; 
 
 export default function Pages() {
   const { pageType } = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(3);
   const [selectedCategory, setSelectedCategory] = useState("Toutes");
 
-  // localstorage
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // localStorage 
   const storedData = JSON.parse(localStorage.getItem("formData")) || {};
   const destinationFilter = storedData.destination || null;
   const budgetFilter = storedData.budget ? parseFloat(storedData.budget) : null;
@@ -32,30 +36,47 @@ export default function Pages() {
     else setData([]);
     setVisible(3);
     setSelectedCategory("Toutes");
+    setSelectedCountry("");
+    setSelectedCity("");
+    setSearchTerm("");
   }, [pageType]);
 
-  
+  // villes du pays choisi
+  const villes = pays.find((p) => p.NOM === selectedCountry)?.VILLE || [];
+
   const filteredData = data.filter((item) => {
     let valid = true;
 
-    if (destinationFilter && item.ville && item.ville !== destinationFilter) {
-      valid = false;
+   
+    if (pageType !== "hotels" && pageType !== "compagnies") {
+      if (destinationFilter && item.ville && item.ville !== destinationFilter) {
+        valid = false;
+      }
     }
 
- 
+    
     if (budgetFilter && item.prix && item.prix > budgetFilter) {
       valid = false;
     }
 
- 
+    
     if (pageType === "chambres" && selectedCategory !== "Toutes") {
       valid = valid && item.categorie === selectedCategory;
+    }
+
+   
+    if (selectedCity && item.ville) {
+      valid = valid && item.ville.toLowerCase() === selectedCity.toLowerCase();
+    }
+
+   
+    if (searchTerm && item.nom) {
+      valid = valid && item.nom.toLowerCase().includes(searchTerm.toLowerCase());
     }
 
     return valid;
   });
 
-  
   const titles = {
     destinations: "Nos Destinations",
     hotels: "Nos Hôtels",
@@ -63,7 +84,6 @@ export default function Pages() {
     chambres: "Nos Chambres Disponibles",
   };
 
- 
   const categories = [
     "Toutes",
     "Standard",
@@ -77,22 +97,17 @@ export default function Pages() {
     "Triple",
   ];
 
- 
   const handleCardClick = (type, nom) => {
- 
     const currentData = JSON.parse(localStorage.getItem("formData")) || {};
 
     if (type === "hotel") currentData.hotel = nom;
     if (type === "compagnie") currentData.compagnie = nom;
 
- 
     if (destinationFilter) currentData.destination = destinationFilter;
     if (budgetFilter) currentData.budget = budgetFilter;
 
-   
     localStorage.setItem("formData", JSON.stringify(currentData));
 
-   
     navigate("/formulaire");
   };
 
@@ -105,7 +120,38 @@ export default function Pages() {
           {titles[pageType] || "Liste"}
         </h1>
 
-        {/* chambres */}
+        {/* --- BARRE DE RECHERCHE PAYS/VILLE --- */}
+        {(pageType === "hotels" || pageType === "compagnies") && (
+          <div className="mb-8 flex flex-col md:flex-row gap-4 justify-center">
+            
+            <select
+              value={selectedCity}
+              onChange={(e) => setSelectedCity(e.target.value)}
+              className="px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none"
+            >
+             <option value="">-- Toutes les villes --</option>
+              {pays
+                .flatMap((p) => Array.isArray(p.VILLE) ? p.VILLE : [p.VILLE])
+                .sort((a, b) => a.localeCompare(b))
+                .map((v, i) => (
+                  <option key={i} value={v}>
+                    {v}
+                  </option>
+                ))} 
+            </select>
+
+            {/* Champ de recherche */}
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Rechercher un nom..."
+              className="px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none w-full md:w-64"
+            />
+          </div>
+        )}
+
+        {/* ---  Filtre pour les chambres--- */}
         {pageType === "chambres" && (
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {categories.map((cat) => (
@@ -124,7 +170,7 @@ export default function Pages() {
           </div>
         )}
 
-        {/* Affichage des cartes */}
+        {/* --- CARTES --- */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredData.length > 0 ? (
             filteredData.slice(0, visible).map((item) => (
@@ -146,7 +192,7 @@ export default function Pages() {
           )}
         </div>
 
-        {/* Boutons  */}
+        {/* --- BOUTONS --- */}
         <div className="flex justify-center mt-6">
           {visible < filteredData.length ? (
             <button

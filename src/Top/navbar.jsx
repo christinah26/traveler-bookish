@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/traveler-nobg.png";
 import SearchBar from "../components/searchBar";
-
+import Logout from "../components/logout.tsx"
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -47,6 +47,7 @@ function Header() {
           <li><Link to="/avis" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Laisser un avis</Link></li>
           {/* <li><Link to="/login" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Log in</Link></li>
           <li><Link to="/signin" className="hover:text-purple-600 hover:scale-110 transition-all duration-300">Sign in</Link></li> */}
+          <li className="hover:text-purple-600 hover:scale-110 transition-all duration-300"><Logout/></li>
         </ul>
       </nav>
 
@@ -64,7 +65,7 @@ function Header() {
           ✕
         </button>
 
-        <div className="flex flex-col items-center mt-16 gap-8 ">
+        <div className="flex flex-col items-center mt-10 gap-7 ">
 
           <SearchBar />
           <Link to="/" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Accueil</Link>
@@ -77,6 +78,7 @@ function Header() {
           <Link to="/avis" onClick={toggleMenu} className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">Laisser un avis</Link>
           {/* {/* <Link to="/login" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Log in</Link>
           <Link to="/signin" onClick={toggleMenu} className="text-lg font-bold text-blue-900">Sign in</Link> */}
+          <div className="text-lg font-bold text-blue-900 hover:text-purple-600 hover:scale-110 transition-all duration-300">< Logout /></div>
         </div> 
       </div>
     </>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
-import DestinationData from '../Data/DestinationData';
+import pays from "../Data/pays.json";
+const DestinationData = pays;
 
 interface TravelProps {
   destination: string;
@@ -17,10 +18,12 @@ const TravelComponent: React.FC<TravelProps> = ({
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDestination(e.target.value);
+    localStorage.setItem("destination", e.target.value);
   };
 
   const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBudget(e.target.value);
+    localStorage.setItem("budget", e.target.value);
   };
 
   return (
@@ -38,8 +41,8 @@ const TravelComponent: React.FC<TravelProps> = ({
         >
           <option value="">-- Sélectionnez une destination --</option>
           {DestinationData.map((d) => (
-            <option key={d.id} value={d.nom}>
-              {d.nom}
+            <option key={d.CODE} value={d.VILLE}>
+              {d.NOM} - {d.VILLE}
             </option>
           ))}
         </select>
@@ -61,6 +64,34 @@ const TravelComponent: React.FC<TravelProps> = ({
           />
         </div>
       )}
+      
+      {/* Type de chambre */}
+{destination && (
+  <div>
+    <label
+      htmlFor="chambre"
+      className="block text-sm font-semibold text-gray-700 mb-2"
+    >
+      Type de chambre *
+    </label>
+    <select
+      id="chambre"
+      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none"
+    >
+      <option value="">-- Sélectionnez une chambre --</option>
+      <option value="standard">Standard</option>
+      <option value="superieur">Supérieur</option>
+      <option value="deluxe">Deluxe</option>
+      <option value="suite">Suite</option>
+      <option value="presidentielle">Présidentielle</option>
+      <option value="simple">Simple</option>
+      <option value="double">Double</option>
+      <option value="triple">Triple</option>
+      <option value="familial">Familiale</option>
+    </select>
+  </div>
+)}
+
     </div>
   );
 };

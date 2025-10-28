@@ -73,12 +73,14 @@ function Formulaire() {
           {/* Choix hôtel et compagnie */}
           {budget && (
             <div className="mt-6 space-y-4">
+              <p className='block text-sm font-semibold text-gray-700 mb-2'>Hotel choisi *</p>
               {hotel ? (
                 <div className="flex items-center gap-3">
                   <input type="text" value={hotel} readOnly className="flex-grow px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-50"/>
                   <button onClick={resetHotel} className="text-red-500 font-bold">✕</button>
                 </div>
               ) : (
+              
                 <button
                   onClick={handleHotelSelect}
                   className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
@@ -86,7 +88,8 @@ function Formulaire() {
                   Choisir un hôtel
                 </button>
               )}
-
+              
+              <p className='block text-sm font-semibold text-gray-700 mb-2'>Compagnie aérienne choisie *</p>
               {compagnie ? (
                 <div className="flex items-center gap-3">
                   <input type="text" value={compagnie} readOnly className="flex-grow px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-50"/>

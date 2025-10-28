@@ -1,53 +1,54 @@
 const HotelData = [
-    {
-      id: 1,
-      nom: 'Hilton Paradise Resort',
-      image: '/hotels_img/hotel1.jpg',
-      desc: 'Plages dorées et rizières verdoyantes.',
-      prix: 900,
-      etoiles:5,
-      type: 'hotel',
-    },
-    {
-      id: 2,
-      nom: 'Hotels Paris',
-      image: '/hotels_img/hotel2.jpg',
-      desc: 'Ville de l’amour et de l’art.',
-      prix: 1200,
-      etoiles:5,
-      type: 'hotel',
-    },
+  {
+    id: 1,
+    nom: 'Hilton Paradise Resort',
+    ville: 'Bali',
+    image: '/hotels_img/hotel1.jpg',
+    desc: 'Plages dorées et rizières verdoyantes.',
+    prix: 900,
+    etoiles: 5,
+    type: 'hotel',
+  },
+  {
+    id: 2,
+    nom: 'Hotels Paris',
+    ville: 'Paris',
+    image: '/hotels_img/hotel2.jpg',
+    desc: 'Ville de l’amour et de l’art.',
+    prix: 1200,
+    etoiles: 5,
+    type: 'hotel',
+  },
+  {
+    id: 3,
+    nom: 'Monteroy',
+    ville: 'Toronto',
+    image: '/hotels_img/hotel3.jpg',
+    desc: 'Charme antique et dolce vita.',
+    prix: 1200,
+    etoiles: 5,
+    type: 'hotel',
+  },
+  {
+    id: 4,
+    nom: 'Lavandou',
+    ville: 'Dubaï',
+    image: '/hotels_img/hotel4.jpg',
+    desc: 'Bord de mer et parfum de lavande.',
+    prix: 1200,
+    etoiles: 5,
+    type: 'hotel',
+  },
+  {
+    id: 5,
+    nom: 'Martinique',
+    ville: 'Fort-de-France',
+    image: '/hotels_img/hotel5.jpg',
+    desc: 'Plages tropicales et ambiance créole.',
+    prix: 1200,
+    etoiles: 5,
+    type: 'hotel',
+  },
+];
 
-    {
-      id: 3,
-      nom: 'Monteroy',
-      image: '/hotels_img/hotel3.jpg',
-      desc: 'Ville de l’amour et de l’art.',
-      prix: 1200,
-      etoiles:5,
-      type: 'hotel',
-    },
-
-    {
-      id: 4,
-      nom: 'Lavandou',
-      image: '/hotels_img/hotel4.jpg',
-      desc: 'Ville de l’amour et de l’art.',
-      prix: 1200,
-      etoiles:5,
-      type: 'hotel',
-    },
-
-    {
-      id: 5,
-      nom: 'Martinique',
-      image: '/hotels_img/hotel5.jpg',
-      desc: 'Ville de l’amour et de l’art.',
-      prix: 1200,
-      etoiles:5,
-      type: 'hotel',
-    },
-
-  ];
-  
-  export default HotelData;
+export default HotelData;
