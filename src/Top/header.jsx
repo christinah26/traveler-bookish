@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 function header(){
     const animateCounter = useRef((id, target, duration) => {
         const element = document.getElementById(id);

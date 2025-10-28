@@ -20,8 +20,10 @@ export default function Logout() {
       if (result.isConfirmed) {
         // Supprime les données de session
         localStorage.removeItem("formData");
-        // Les trucs à supprimer à mettre ici 
-
+        // Les trucs à supprimer à mettre ici du genre :
+        // localStorage.removeItem("otherData");
+        // localStorage.clear(); // Pour supprimer toutes les données de localStorage
+         
 
         // Popup de confirmation
         Swal.fire({

@@ -1,19 +1,29 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
 import {ArrowLeft } from 'lucide-react';
-
+import Swal from "sweetalert2"
 function Retour() {
-const navigate = useNavigate();
+ 
+
 const handleRetour = () => {
-    if (confirm('Voulez-vous vraiment quitter  ?')) {
-      navigate(-1);
+    Swal.fire({
+         text: "Voulez vous vraiment quitter la page ?",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Oui",
+         cancelButtonText: "Non",
+         reverseButtons: true,
+       }).then(() => {
+         
+          window.history.back();
+        });
 
     }
-  };
+  
 
     return (
             <button
-                type="button"
                 onClick={handleRetour}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               >
@@ -21,5 +31,5 @@ const handleRetour = () => {
                 Retour
               </button>
     );
-}
+  }
 export default Retour;

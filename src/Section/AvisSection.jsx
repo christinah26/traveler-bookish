@@ -8,7 +8,7 @@ import { Hotel, Plane } from "lucide-react";
 function AvisSection(){
     const [activeButton, setActiveButton] = useState("hotel");
     const AvisCompagnie = AvisVol;
-    const AvisHotel = AvisCompagnie;
+    const AvisHotel = AvisHotels;
 
     const data = activeButton === "hotel" ? AvisHotel : AvisCompagnie;
 
@@ -56,8 +56,8 @@ function AvisSection(){
         <SectionList
           title={
             activeButton === "hotel"
-              ? "Avis sur les Hôtels"
-              : "Avis sur les Compagnies Aériennes"
+              ? " les Hôtels"
+              : " les Compagnies Aériennes"
           }
           sousTitre={
             activeButton === "hotel"

@@ -199,7 +199,7 @@ export default function Pages() {
               onClick={() => setVisible(visible + 3)}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Voir plus
+              Voir plus ↓
             </button>
           ) : (
             filteredData.length > 3 && (
@@ -207,7 +207,7 @@ export default function Pages() {
                 onClick={() => setVisible(3)}
                 className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition-colors"
               >
-                Voir moins
+                Voir moins ↑
               </button>
             )
           )}
