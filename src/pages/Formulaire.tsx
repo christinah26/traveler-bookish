@@ -26,7 +26,7 @@ interface FormData {
 function Formulaire() {
   const navigate = useNavigate();
 
-  // Récupération des données du localStorage
+  //  données du localStorage en récupération
   const storedData = JSON.parse(localStorage.getItem("formData") || "{}");
 
   const [formData, setFormData] = useState<FormData>({
@@ -119,7 +119,6 @@ function Formulaire() {
         })
       );
     }
-    console.log("Données du formulaire:", formData);
     Swal.fire({
       text: "Votre demande de réservation a été envoyée avec succès !",
       icon: "success",

@@ -10,12 +10,21 @@ export default function Logout() {
       title: "Déconnexion",
       text: "Voulez-vous vraiment vous déconnecter ?",
       icon: "warning",
+      iconColor:"#fff",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Oui, me déconnecter",
       cancelButtonText: "Annuler",
       reverseButtons: true,
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      customClass: {
+       popup: "custom-popup",
+       confirmButton: "custom-confirm-button",
+       cancelButton: "custom-cancel-button",
+     }
+
     }).then((result) => {
       if (result.isConfirmed) {
         // Supprime les données de session
@@ -27,13 +36,18 @@ export default function Logout() {
 
         // Popup de confirmation
         Swal.fire({
-          title: "Déconnecté !",
-          text: "Vous avez été déconnecté avec succès.",
+          title: "Déconnecté avec succès!",
           icon: "success",
-          timer: 2000,
-          showConfirmButton: false,
-        }).then(() => {
-        //   page d'accueil 
+          iconColor: "#ffff",
+          confirmButtonText: "OK",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          customClass: {
+            popup: "custom-popup",
+            title: "custom-title",
+            confirmButton: "custom-confirm-button",
+          }
+        }).then((result) => {
           navigate("/");
         });
       }
