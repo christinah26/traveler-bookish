@@ -36,7 +36,7 @@ function header(){
           loop
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
-          src='/video/video.mp4'
+          src='/video/qualityVideo.mp4'
           aria-hidden="true"
         />
          <div className="absolute inset-0 bg-black/15 z-0"></div>
