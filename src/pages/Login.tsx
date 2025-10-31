@@ -61,17 +61,16 @@ export default function Login() {
 
             Swal.fire({
                 icon: "error",
-                title: "Erreur",
-                text: "E-mail ou mot de passe incorrect.",
-                confirmButtonColor: "#3085d6",
+                iconColor: "#ffff",
+                title: "E-mail ou mot de passe incorrect.",
+                customClass: {
+                    popup: "custom-popup",
+                    title: "custom-text",
+                    confirmButton: "custom-confirm-button",
+                },
             });
         }
     };
-
-    // const handleForgotPassword = (e: React.MouseEvent) => {
-    //   e.preventDefault();
-    //   alert('Fonctionnalité de récupération de mot de passe à implémenter');
-    // };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-300 to-blue-200 py-12 px-4">
