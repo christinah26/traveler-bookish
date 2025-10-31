@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import Swal from "sweetalert2";
+// @ts-ignore
 import Logo from "../assets/traveler-nobg.png";
-import './popup.css';
+import { useLocation, useNavigate } from "react-router-dom";
+// import './popup.css';
 // import { Result } from "postcss";
 
-const Popup: React.FC = () => {
-
+const Popup: React.FC<{ token: string }> = ({ token }: { token: string }) => {
+    const navigate = useNavigate();
     const handleRetour = () => {
         Swal.fire({
             title: "Voulez-vous vraiment quitter cette page ?",
@@ -20,17 +22,16 @@ const Popup: React.FC = () => {
                 popup: "custom-popup",
                 title: "custom-title",
                 confirmButton: "custom-confirm-button",
-                cancelButton: "custom-cancel-button",         
-            }
+                cancelButton: "custom-cancel-button",
+            },
         }).then((result) => {
             if (result.isConfirmed) {
-                window.history.back() ;
-                
-            } else if (result.dismiss === 'cancel') {
+                window.history.back();
+            } else if (result.dismiss === "cancel") {
                 showPopup();
             }
-    });
-        }
+        });
+    };
 
     const showPopup = () => {
         Swal.fire({
@@ -52,27 +53,27 @@ const Popup: React.FC = () => {
                 image: "custom-image",
                 confirmButton: "custom-confirm-button",
                 cancelButton: "custom-cancel-button",
-            }
+            },
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/login";
-            
+                navigate("/login");
             } else if (result.dismiss === "cancel") {
                 handleRetour();
             }
-
         });
-    }
+    };
+
+    const location = useLocation();
 
     // "censer" empêcher le pop up de revenir après connexion
-    useEffect (() => {
-        const isAuthenticated = !!localStorage.getItem("token");
-        const currentPath = window.location.pathname;
-
-        if (!isAuthenticated && currentPath !== "/login" && currentPath !== "/signin") {
+    useEffect(() => {
+        if (
+            !token &&
+            location.pathname !== "/login" &&
+            location.pathname !== "/signin"
+        ) {
             showPopup();
         }
-        
     }, []);
 
     return null;
