@@ -151,10 +151,12 @@ function Signin() {
                             <Home size={17} />
                             <span>Pays de résidence</span>
                         </div>
+                <div>
                         <div>
                             <select
-                                className="p-2 border-2 rounded-xl w-1/2 my-5 focus:ring focus:ring-blue-200"
+                                className="p-2 border-2 border-gray-200 rounded-xl w-1/2 my-5 focus:ring focus:ring-blue-200"
                                 value={formData.pays?.CODE}
+                                // defaultValue={AD}
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,
@@ -237,6 +239,7 @@ function Signin() {
                         </p>
                     </div>
                 </div>
+            </div>
             </div>
             <div className="text-center mt-6">
                 <p className="text-white">
