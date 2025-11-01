@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, X, MapPin, Calendar, Hotel, Coins } from 'lucide-react';
+import pays from '../utils/pays';
 import React from 'react';
 
 interface Travel {
@@ -10,111 +11,18 @@ interface Travel {
   dateDebut: string;
   dateFin: string;
   price: number;
-  image: string;
+
 }
 
-const mockTravels: Travel[] = [
-  {
-    id: 1,
-    destination: 'Paris',
-    country: 'France',
-    hotel: 'Le Royal Meridien',
-    dateDebut: '2025-11-15',
-    dateFin: '2025-11-22',
-    price: 1500,
-    image: '🗼'
-  },
-  {
-    id: 2,
-    destination: 'Tokyo',
-    country: 'Japon',
-    hotel: 'Shangri-La Hotel',
-    dateDebut: '2025-12-01',
-    dateFin: '2025-12-10',
-    price: 2200,
-    image: '🗾'
-  },
-  {
-    id: 3,
-    destination: 'Bali',
-    country: 'Indonésie',
-    hotel: 'Hilton Paradise Resort',
-    dateDebut: '2025-11-20',
-    dateFin: '2025-11-27',
-    price: 1200,
-    image: '🏝️'
-  },
-  {
-    id: 4,
-    destination: 'New York',
-    country: 'USA',
-    hotel: 'Waldorf Astoria',
-    dateDebut: '2025-12-15',
-    dateFin: '2025-12-22',
-    price: 1800,
-    image: '🗽'
-  },
-  {
-    id: 5,
-    destination: 'Dubai',
-    country: 'EAU',
-    hotel: 'Ritz Carlton Oceanview',
-    dateDebut: '2025-11-10',
-    dateFin: '2025-11-17',
-    price: 2500,
-    image: '🏙️'
-  },
-  {
-    id: 6,
-    destination: 'Rome',
-    country: 'Italie',
-    hotel: 'InterContinental Palace',
-    dateDebut: '2025-12-05',
-    dateFin: '2025-12-12',
-    price: 1400,
-    image: '🏛️'
-  },
-  {
-    id: 7,
-    destination: 'Maldives',
-    country: 'Maldives',
-    hotel: 'Four Seasons Resort',
-    dateDebut: '2025-11-25',
-    dateFin: '2025-12-02',
-    price: 3000,
-    image: '🏖️'
-  },
-  {
-    id: 8,
-    destination: 'Barcelone',
-    country: 'Espagne',
-    hotel: 'Sofitel Luxury Suites',
-    dateDebut: '2025-12-10',
-    dateFin: '2025-12-17',
-    price: 1300,
-    image: '🏰'
-  },
-  {
-    id: 9,
-    destination: 'Kyoto',
-    country: 'Japon',
-    hotel: 'Hyatt Regency Downtown',
-    dateDebut: '2025-11-28',
-    dateFin: '2025-12-05',
-    price: 2000,
-    image: '⛩️'
-  },
-  {
-    id: 10,
-    destination: 'Londres',
-    country: 'UK',
-    hotel: 'Marriott Grand Hotel',
-    dateDebut: '2025-12-20',
-    dateFin: '2025-12-27',
-    price: 1600,
-    image: '🎡'
-  }
-];
+const mockTravels: Travel[] = pays.map((pays) => ({
+  id: pays.CODE,
+  destination: pays.VILLE,
+  country: pays.NOM,
+  hotel: 'Le Royal Meridien',
+  dateDebut: '2025-11-15',
+  dateFin: '2025-11-22',
+  price: Math.floor(Math.random() * (4000 - 1000) + 1000),
+}));
 
 function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -171,6 +79,8 @@ function SearchBar() {
   const handleReset = () => {
     setSearchTerm('');
     setSearchDate('');
+    setMinPrice('');
+    setMaxPrice('');
     setFilteredTravels(mockTravels);
   };
 
@@ -305,7 +215,7 @@ function SearchBar() {
                         className="border-2 border-gray-200 rounded-lg p-4 hover:border-blue-500 transition-colors cursor-pointer"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="text-3xl">{travel.image}</div>
+                          {/* <div className="text-3xl">{travel.image}</div> */}
                           <div className="flex-1">
                             <h4 className="font-bold text-gray-800">
                               {travel.destination}, {travel.country}
