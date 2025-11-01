@@ -26,7 +26,7 @@ const Popup: React.FC<{ token: string }> = ({ token }: { token: string }) => {
             },
         }).then((result) => {
             if (result.isConfirmed) {
-                window.history.back();
+                navigate("/");
             } else if (result.dismiss === "cancel") {
                 showPopup();
             }
@@ -69,8 +69,9 @@ const Popup: React.FC<{ token: string }> = ({ token }: { token: string }) => {
     useEffect(() => {
         if (
             !token &&
-            location.pathname !== "/login" &&
-            location.pathname !== "/signin"
+            // location.pathname !== "/login" &&
+            // location.pathname !== "/signin"
+            location.pathname === "/home"
         ) {
             showPopup();
         }

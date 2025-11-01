@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import LogoutUser from "../api/Logout";
@@ -53,7 +54,7 @@ export default function Logout() {
                                 confirmButton: "custom-confirm-button",
                             },
                         }).then((result) => {
-                            navigate("/login");
+                            navigate("/");
                         });
                     }
                 };
