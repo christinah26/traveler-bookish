@@ -5,7 +5,7 @@ import Logo from "../assets/traveler-nobg.png";
 import Field from "../components/champ";
 import Date from "../components/date";
 import Retour from "../components/retour";
-import { Hotel, Mail, MapPin, Phone, Plane, Send, UserPen, X, Coins, Bed } from "lucide-react";
+import { Hotel, Mail, MapPin, Phone, Plane, Send, UserPen, X, Coins, Bed, Calendar } from "lucide-react";
 import Swal from "sweetalert2";
 import "../components/popup";
 import pays from '../utils/pays';
@@ -20,8 +20,7 @@ interface FormData {
   hotel: string;
   compagnie: string;
   room: string;
-  dateDebut: string;
-  dateFin: string;
+  date: string;
   pays: {
     CODE: string;
     NOM: string;
@@ -44,8 +43,7 @@ function Formulaire() {
     hotel: storedData.hotel || '',
     compagnie: storedData.compagnie || '',
     room: 'standard',
-    dateDebut: '',
-    dateFin: '',
+    date: '',
     pays: {
       CODE: "AD",
       NOM: "Andorre",
@@ -302,7 +300,8 @@ function Formulaire() {
             </div>
 
             {/* Dates */}
-            <Date dateDebut={formData.dateDebut} dateFin={formData.dateFin} onChange={handleChange} />
+            {/* <Date dateDebut={formData.dateDebut} dateFin={formData.dateFin} onChange={handleChange} /> */}
+            <Field label="Durée du séjour" icon={Calendar} id="date" name="date" type="number" value={formData.date} onChange={handleChange} placeholder="Jours de séjour" />
 
             {/* Boutons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
