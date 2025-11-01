@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {useAuth} from "../contexts/AuthContext.jsx";
 
 export default function Card({
   type,  
@@ -15,10 +16,13 @@ export default function Card({
   showStars = false,
   showDate = false,
 }) {
-
+    const {token} = useAuth();
     const navigate = useNavigate();
 
     const handleReserve = () => {
+      if (!token) {navigate("/login");}else {
+        
+      
   // localStorage 
       const currentData = JSON.parse(localStorage.getItem("formData")) || {};
     
@@ -30,7 +34,8 @@ export default function Card({
       localStorage.setItem("formData", JSON.stringify(currentData));
     
     
-      navigate("/formulaire");
+          navigate("/formulaire");
+        }
     };
     
 

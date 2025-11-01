@@ -16,7 +16,7 @@ import { useAuth } from "./contexts/AuthContext.tsx";
 import { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import Popup from "./components/popup.tsx";
-import PagePublic from "./pages/PagePublic.tsx";
+import Dashboard from "./pages/dashboard.tsx";
 
 export default function App() {
     const { token, refreshToken } = useAuth();
@@ -46,11 +46,11 @@ export default function App() {
         <Router>
             <Popup token={token || ""} />
             <Routes>
-                <Route path="/" element={<PagePublic />} />
+                <Route path="/" element={<Accueil />} />
                 <Route
                     path="/home"
                     element={
-                        isAuthenticated ? <Accueil /> : <Navigate to="login" />
+                        isAuthenticated ? <Dashboard /> : <Navigate to="login" />
                     }
                 />
                 <Route path="/formulaire" element={<Formulaire />} />

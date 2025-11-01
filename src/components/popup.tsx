@@ -69,9 +69,9 @@ const Popup: React.FC<{ token: string }> = ({ token }: { token: string }) => {
     useEffect(() => {
         if (
             !token &&
-            // location.pathname !== "/login" &&
-            // location.pathname !== "/signin"
-            location.pathname === "/home"
+             location.pathname !== "/login" &&
+             location.pathname !== "/signin"
+            
         ) {
             showPopup();
         }

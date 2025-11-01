@@ -54,17 +54,14 @@ function header(){
           </p>
 
           <a
-            href="#section"
+            href="/home"
             className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110"
             aria-label="Commencer l'exploration"
           >
-            Commençons l'exploration
+            Se connecter 
 
           </a>
 
-          {/* <button className="inline-block bg-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-110">
-            <Link to="/signin">Créer un compte</Link>
-          </button> */}
         </div>
     
         <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8 z-10 text-white">

@@ -29,38 +29,33 @@ export default function Logout() {
                 confirmButton: "custom-confirm-button",
                 cancelButton: "custom-cancel-button",
             },
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const logout = async () => {
-                    const status = await LogoutUser(token, context.id);
-                    if (status === 200) {
-                        // Supprime les données de session
-                        localStorage.removeItem("refreshToken");
-                        // Les trucs à supprimer à mettre ici du genre :
-                        // localStorage.removeItem("otherData");
-                        // localStorage.clear(); // Pour supprimer toutes les données de localStorage
-
-                        // Popup de confirmation
-                        Swal.fire({
-                            title: "Déconnecté avec succès!",
-                            icon: "success",
-                            iconColor: "#ffff",
-                            confirmButtonText: "OK",
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            customClass: {
-                                popup: "custom-popup",
-                                title: "custom-title",
-                                confirmButton: "custom-confirm-button",
-                            },
-                        }).then((result) => {
-                            navigate("/");
-                        });
-                    }
-                };
-                logout();
-            }
-        });
+            });
+    
+        const logout = async () => {
+            // SOLUTION TEMPORAIRE : Clear manuellement
+            localStorage.removeItem('token'); // ou sessionStorage selon ton backend
+            localStorage.removeItem('refreshToken');
+          
+        
+            Swal.fire({
+                title: "Déconnecté avec succès!",
+                icon: "success",
+                iconColor: "#ffff",
+                confirmButtonText: "OK",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                customClass: {
+                    popup: "custom-popup",
+                    title: "custom-title",
+                    confirmButton: "custom-confirm-button",
+                },
+            }).then((result) => {
+                navigate("/");
+                window.location.reload();
+            });
+        };
+    
+        logout();
     };
 
     return <button onClick={handleLogout}>Déconnexion</button>;

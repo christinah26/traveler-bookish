@@ -1,97 +1,3 @@
-// import Navbar from '../Top/navbar.jsx';
-// import Footer from '../Top/footer';
-// import Header from '../Top/header.jsx';
-// import SectionList from '../Section/SectionList.jsx';
-// import destinationsData from '../Data/DestinationData.jsx';
-// import aeroData from '../Data/aeroData.jsx';
-// import hotelsData from '../Data/HotelData.jsx';
-// import ChambreData from '../Data/ChambreData.jsx';
-// import Contact from '../Section/contact.jsx';
-// import FadeIn from '../components/fadeIn.jsx';
-// import AvisSection from '../Section/AvisSection.jsx';
-
-// function Accueil() {
-//   return (
-//     <>
-//     <Navbar />
-//     <div className=" flex flex-col min-h-screen bg-gray-400">
-
-//       <FadeIn>
-//       <Header />
-//       </FadeIn>
-
-//       <main className="flex-grow">
-//         <FadeIn>
-//         {/* Destinations */}
-//         <SectionList
-//         id= "destinations-section"
-//         title="Destinations Populaires"
-//         sousTitre="Découvrez nos destinations les plus prisées"
-//         data={destinationsData}
-//         buttonLink="/pages/destinations"
-//         buttonText="Explorer les destinations"
-//         options={{ showImage: true, showPrice: true, showReserve: true }}
-//         />
-//         </FadeIn>
-
-//         <FadeIn>
-//         {/* Hotels */}
-//         <SectionList
-//         title="Hôtels Recommandés"
-//         sousTitre="Trouvez les meilleurs hébergements pour votre séjour"
-//         data={hotelsData}
-//         buttonLink="/pages/hotels"
-//         buttonText="Explorer les hôtels"
-//         options={{ showStars:true, showImage: true, showPrice: true, showReserve: true }}
-
-//         />
-//         </FadeIn>
-
-//         {/* Chambres */}
-//         <FadeIn>
-//         <SectionList
-//         title="Nos Chambres"
-//         sousTitre="Découvrez nos chambres selon vos envies"
-//         data={ChambreData}
-//         buttonLink="/pages/chambres"
-//         buttonText="Voir toutes les chambres"
-//         options={{ showPrice: true, showImage : true , showReserve: true }}
-//       />
-//         </FadeIn>
-
-//         <FadeIn>
-//         {/* Compagnies aériennes */}
-//         <SectionList
-//         title="Nos compagnies aériennes"
-//         sousTitre="Voyagez avec les meilleures compagnies aériennes"
-//         data={aeroData}
-//         buttonLink="/pages/compagnies"
-//         buttonText="Explorer les compagnies aériennes"
-//         options={{ showStars:true, showImage: true, showPrice: false , showReserve: true }}
-//         />
-//         </FadeIn>
-
-//       <FadeIn>
-//       {/* Avis Section */}
-//       <AvisSection/>
-//       </FadeIn>
-
-//       <FadeIn>
-
-//       <Contact/>
-
-//       </FadeIn>
-//       </main>
-
-//       <Footer />
-//     </div>
-//     </>
-
-//   );
-// }
-
-// export default Accueil;
-
 import Navbar from "../Top/navbar.jsx";
 import Footer from "../Top/footer";
 import Header from "../Top/header.jsx";
@@ -103,12 +9,12 @@ import ChambreData from "../Data/ChambreData.jsx";
 import Contact from "../Section/contact.jsx";
 import FadeIn from "../components/fadeIn.jsx";
 import AvisSection from "../Section/AvisSection.jsx";
-import { MapPin, Star, Award, Shield } from "lucide-react";
+
 
 function Accueil() {
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-50 to-white">
                 <FadeIn>
                     <Header />
