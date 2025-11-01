@@ -77,7 +77,7 @@ export default function Login() {
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-50 bg-white rounded-full shadow-lg mb-4">
-                        <img src={Logo} />
+                        <img src={Logo}  alt="Logo" />
                     </div>
                     <h1 className="text-4xl font-bold text-white mb-2">
                         Connexion

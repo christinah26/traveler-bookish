@@ -32,13 +32,16 @@ function Signin() {
         pays: {
             CODE: string;
             NOM: string;
-        } | null;
+        };
     }>({
         nom: "",
         prenom: "",
         email: "",
         password: "",
-        pays: null,
+        pays: {
+            CODE: "AD",
+            NOM: "Andorre",
+        },
     });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -156,7 +159,6 @@ function Signin() {
                             <select
                                 className="p-2 border-2 border-gray-200 rounded-xl w-1/2 my-5 focus:ring focus:ring-blue-200"
                                 value={formData.pays?.CODE}
-                                // defaultValue={AD}
                                 onChange={(e) => {
                                     setFormData({
                                         ...formData,

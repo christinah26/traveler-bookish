@@ -5,9 +5,10 @@ import Logo from "../assets/traveler-nobg.png";
 import Field from "../components/champ";
 import Date from "../components/date";
 import Retour from "../components/retour";
-import { Hotel, Mail, MapPin, Phone, Plane, Send, UserPen, DollarSign, X } from "lucide-react";
+import { Hotel, Mail, MapPin, Phone, Plane, Send, UserPen, X, Coins, Bed } from "lucide-react";
 import Swal from "sweetalert2";
 import "../components/popup";
+import pays from '../utils/pays';
 
 interface FormData {
   nom: string;
@@ -21,6 +22,10 @@ interface FormData {
   room: string;
   dateDebut: string;
   dateFin: string;
+  pays: {
+    CODE: string;
+    NOM: string;
+  };
 }
 
 function Formulaire() {
@@ -41,6 +46,10 @@ function Formulaire() {
     room: 'standard',
     dateDebut: '',
     dateFin: '',
+    pays: {
+      CODE: "AD",
+      NOM: "Andorre",
+    },
   });
 
   // Mise à jour du localStorage quand les données changent
@@ -143,7 +152,7 @@ function Formulaire() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-50 bg-white rounded-full shadow-lg mb-4">
-            <img src={Logo} alt="Traveler Logo" />
+            <img src={Logo} alt="Logo" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">Réservez votre voyage</h1>
           <p className="text-blue-50 text-lg">Remplissez le formulaire pour démarrer votre aventure</p>
@@ -165,8 +174,36 @@ function Formulaire() {
 
             {/* Destination et Budget */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Field label="Destination" icon={MapPin} id="destination" name="destination" value={formData.destination} onChange={handleChange} placeholder="Destination choisie" />
-              <Field label="Budget (€)" icon={DollarSign} id="budget" name="budget" type="number" value={formData.budget} onChange={handleChange} placeholder="Votre budget" />
+              {/* <Field label="Destination" icon={MapPin} id="destination" name="destination" value={formData.destination} onChange={handleChange} placeholder="Destination choisie" /> */}
+              <div>
+                <label htmlFor="room" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <MapPin className="inline w-4 h-4 mr-1"/>Destination *</label>
+                <select
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                  value={formData.pays?.CODE}
+                  onChange={(e) => {
+                      setFormData({
+                          ...formData,
+                          pays: {
+                              CODE: pays.find(
+                                  (c) => c.CODE === e.target.value
+                              )!.CODE,
+                              NOM: pays.find(
+                                  (c) => c.CODE === e.target.value
+                              )!.NOM,
+                          },
+                      });
+                  }}
+                >
+                  {pays.map((p) => (
+                      <option key={p.CODE} value={p.CODE}>
+                          {p.NOM}
+                      </option>
+                  ))}
+                </select>
+              </div>
+              
+              <Field label="Budget (€)" icon={Coins} id="budget" name="budget" type="number" value={formData.budget} onChange={handleChange} placeholder="Votre budget" />
             </div>
 
             {/* Hôtel et Compagnie */}
@@ -174,7 +211,9 @@ function Formulaire() {
               <div className="space-y-4">
                 {/* Hôtel */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Hôtel choisi *</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <Hotel className="inline w-4 h-4 mr-1"/>
+                    Hôtel choisi *</label>
                   {formData.hotel ? (
                     <div className="flex items-center gap-3">
                       <input
@@ -195,9 +234,9 @@ function Formulaire() {
                     <button
                       onClick={handleHotelSelect}
                       type="button"
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                     >
-                      <Hotel size={20} />
+                      {/* <Hotel size={20} /> */}
                       Choisir un hôtel
                     </button>
                   )}
@@ -205,7 +244,9 @@ function Formulaire() {
 
                 {/* Compagnie aérienne */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Compagnie aérienne choisie *</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <Plane className="inline w-4 h-4 mr-1"/>
+                    Compagnie aérienne choisie *</label>
                   {formData.compagnie ? (
                     <div className="flex items-center gap-3">
                       <input
@@ -226,9 +267,9 @@ function Formulaire() {
                     <button
                       onClick={handleCompagnieSelect}
                       type="button"
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                     >
-                      <Plane size={20} />
+                      {/* <Plane size={20} /> */}
                       Choisir une compagnie aérienne
                     </button>
                   )}
@@ -238,7 +279,9 @@ function Formulaire() {
 
             {/* Type de chambre */}
             <div>
-              <label htmlFor="room" className="block text-sm font-semibold text-gray-700 mb-2">Type de chambre *</label>
+              <label htmlFor="room" className="block text-sm font-semibold text-gray-700 mb-2">
+                <Bed className="inline w-4 h-4 mr-1"/>
+                Type de chambre *</label>
               <select
                 name="room"
                 id="room"
